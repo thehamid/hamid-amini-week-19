@@ -11,7 +11,7 @@ const Input = ({ label, name, type = 'text', error, ...rest }) => {
         className={`rounded-xl w-full h-14 py-5 px-4 bg-secondary text-zinc-700 leading-tight focus:outline-none focus:shadow-outline ${
           error ? 'border-red-500' : ''
         }`}
-        {...rest} // تمام props دیگر مثل register, onChange, onBlur, value را اینجا می‌گیرد
+        {...rest} 
       />
       {error && (
         <p className="text-red-500 text-xs italic mt-1">{error}</p>

@@ -1,13 +1,9 @@
-function Loading() {
-
+const Loading = () => {
   return (
-    <div className="flex justify-center items-center min-h-svh">
-      <div
-        className={`absolute rounded-full border-gray-100 border-r-primary border-b-primary animate-spin `}
-        style={{ animationDuration: '1s' }}
-      ></div>
+    <div className="p-3 animate-spin drop-shadow-2xl bg-linear-to-bl from-pink-400 via-purple-400 to-indigo-600 md:w-48 md:h-48 h-32 w-32 aspect-square rounded-full">
+      <div className="rounded-full h-full w-full bg-slate-100 dark:bg-zinc-900 background-blur-md"></div>
     </div>
   );
-}
+};
 
 export default Loading;

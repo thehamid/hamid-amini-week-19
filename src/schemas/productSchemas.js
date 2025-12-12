@@ -1,5 +1,6 @@
 import * as yup from 'yup';
 
+// Schema validation for product form
 export const productSchema = yup.object().shape({
   name: yup
     .string()

@@ -1,38 +1,42 @@
-import React from 'react';
-import Button from './ui/Button';
+import React from "react";
+import Button from "./ui/Button";
+import close from "@/assets/Close.png";
 
-const DeleteModal = ({ isOpen, onClose, onConfirm, productName }) => {
+const DeleteModal = ({ isOpen, onClose, onConfirm, productName, message }) => {
   if (!isOpen) return null;
 
+  const displayMessage =
+    message || `آیا از حذف محصول "<b>${productName}</b>" مطمئن هستید؟`;
+
   return (
-    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-      <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+    <div className="fixed inset-0 transition-all transform bg-black/10  backdrop-blur-md overflow-y-auto h-full w-full">
+      <div className="relative top-40 mx-auto p-5 border w-96 shadow-lg rounded-2xl bg-white">
         <div className="mt-3 text-center">
-          <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100">
-            <svg className="h-6 w-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-            </svg>
+          <div className="mx-auto flex items-center justify-center h-24 w-24 rounded-full">
+            <img src={close} alt="close" />
           </div>
-          <h3 className="text-lg leading-6 font-medium text-gray-900 mt-4">حذف محصول</h3>
-          <div className="mt-2 px-7 py-3">
-            <p className="text-sm text-gray-500">
-              آیا از حذف محصول "<b>{productName}</b>" مطمئن هستید؟ این عمل غیرقابل بازگشت است.
-            </p>
+          <div className="mt-5 px-7 py-3">
+            <p
+              className="text-md text-gray-500"
+              dangerouslySetInnerHTML={{ __html: displayMessage }}
+            ></p>
+            <p className="text-md text-gray-500">این عمل غیرقابل بازگشت است.</p>
           </div>
           <div className="flex justify-center gap-4 mt-4">
             <Button
               type="button"
-              onClick={onClose}
-              className="bg-gray-300 hover:bg-gray-400 text-gray-800"
+              onClick={onConfirm}
+              className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-xl w-full cursor-pointer"
             >
-              خیر
+              حذف
             </Button>
+
             <Button
               type="button"
-              onClick={onConfirm}
-              className="bg-red-600 hover:bg-red-700"
+              onClick={onClose}
+              className="bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 px-4 rounded-xl w-full cursor-pointer"
             >
-              بله، حذف کن
+              لغو
             </Button>
           </div>
         </div>
